@@ -147,6 +147,12 @@ function Gallery() {
         >
           2nd Conference
         </button>
+        <button
+          style={activeConference === 3 ? styles.activeTab : styles.tab}
+          onClick={() => setActiveConference(2)}
+        >
+          <a href="https://nriit.edu.in/quadnext-2026/">3rd Conference</a>
+        </button>
       </div>
 
       {/* Conference Details */}

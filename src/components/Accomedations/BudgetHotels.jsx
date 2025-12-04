@@ -50,7 +50,7 @@ const hotels = [
   {
     name: "Hotel Midcity",
     url: "https://www.hotelmidcity.com/",
-    image: "/Location/1.jpeg",
+    image: "/1.jpeg",
     rating: 3.7,
     location: "Bunder Road",
     amenities: ["AC", "WiFi", "Lift"],
@@ -130,260 +130,150 @@ const hotels = [
   {
     name: "Hotel Sun Square (Goibibo)",
     url: "https://www.goibibo.com/hotels/sun-square-hotel-in-vijayawada-5808355584631181082/",
-    image: "/Location/2.jpeg",
+    image: "/2.jpeg",
     rating: 3.8,
     location: "Business District",
     amenities: ["Business", "WiFi", "AC"],
   },
 ];
 
-const HotelItem = ({ name, url, image, rating, location, amenities }) => {
-  const [imageError, setImageError] = useState(false);
-
-  const renderStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    const stars = [];
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <Star key={i} size={12} style={{ color: "#141E46" }} fill="#141E46" />
-      );
-    }
-    if (hasHalfStar) {
-      stars.push(
-        <Star
-          key="half"
-          size={12}
-          style={{ color: "#141E46", opacity: 0.5 }}
-          fill="#141E46"
-        />
-      );
-    }
-    return stars;
-  };
-
-  const fallbackImage =
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop";
-
-  return (
-    <div className="list-group-item border-0 p-0 hotel-item">
-      <div className="card border-0 shadow-sm h-100 overflow-hidden">
-        <div className="row g-0 h-100">
-          {/* Hotel Image */}
-          <div className="col-4 d-flex align-items-center justify-content-center p-3">
-            <div className="position-relative">
-              <img
-                src={imageError ? fallbackImage : image}
-                alt={name}
-                className="rounded-circle border shadow-sm hotel-image"
-                style={{ width: "80px", height: "80px", objectFit: "cover" }}
-                onError={() => setImageError(true)}
-              />
-              {/* Rating Badge */}
-              <div
-                className="position-absolute top-0 end-0 text-white rounded-circle d-flex align-items-center justify-content-center"
-                style={{
-                  backgroundColor: "#141E46",
-                  width: "28px",
-                  height: "28px",
-                  fontSize: "11px",
-                  fontWeight: "bold",
-                }}
-              >
-                {rating}
-              </div>
-            </div>
-          </div>
-
-          {/* Hotel Details */}
-          <div className="col-8">
-            <div className="card-body p-3 h-100 d-flex flex-column">
-              <div className="flex-grow-1">
-                <h6
-                  className="card-title mb-1 fw-bold"
-                  style={{
-                    color: "#141E46",
-                    fontSize: "14px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {name}
-                </h6>
-
-                {/* Stars */}
-                <div className="d-flex align-items-center mb-2">
-                  <div className="d-flex me-2">{renderStars(rating)}</div>
-                  <small style={{ color: "#6c757d" }}>({rating})</small>
-                </div>
-
-                {/* Location */}
-                <div
-                  className="d-flex align-items-center mb-2"
-                  style={{ color: "#6c757d" }}
-                >
-                  <MapPin
-                    size={12}
-                    className="me-1"
-                    style={{ color: "#141E46" }}
-                  />
-                  <small style={{ fontSize: "11px" }}>{location}</small>
-                </div>
-
-                {/* Price */}
-                <div className="mb-2">
-                  <span
-                    className="badge"
-                    style={{
-                      backgroundColor: "#E8EBF7",
-                      color: "#141E46",
-                      fontSize: "10px",
-                    }}
-                  >
-                    ₹1,000–₹2,000/day
-                  </span>
-                </div>
-
-                {/* Amenities */}
-                <div className="d-flex flex-wrap gap-1 mb-2">
-                  {amenities.slice(0, 2).map((a, i) => (
-                    <span
-                      key={i}
-                      className="badge border"
-                      style={{
-                        backgroundColor: "#f9f9f9",
-                        color: "#141E46",
-                        fontSize: "9px",
-                      }}
-                    >
-                      {a}
-                    </span>
-                  ))}
-                  {amenities.length > 2 && (
-                    <span
-                      className="badge border"
-                      style={{
-                        backgroundColor: "#f9f9f9",
-                        color: "#141E46",
-                        fontSize: "9px",
-                      }}
-                    >
-                      +{amenities.length - 2}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Book Now Button */}
-              <div className="mt-auto">
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sm w-100 d-flex align-items-center justify-content-center"
-                  style={{
-                    backgroundColor: "#141E46",
-                    color: "#fff",
-                    fontSize: "11px",
-                    padding: "6px 12px",
-                  }}
-                >
-                  <ExternalLink size={12} className="me-1" />
-                  Book Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const splitIntoTwoColumns = (items) => {
   const mid = Math.ceil(items.length / 2);
   return [items.slice(0, mid), items.slice(mid)];
 };
 
-const HotelList = () => {
-  const [left, right] = splitIntoTwoColumns(hotels.slice(0, 15));
+/** Hotel Card Component */
+function HotelItem({ name, url, image, rating, location, amenities }) {
+  const [imgSrc, setImgSrc] = useState(image);
+
+  const fallback =
+    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop";
+
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating - fullStars >= 0.5;
 
   return (
-    <div
-      className="container-fluid py-2"
-      style={{ backgroundColor: "#f8f9fa" }}
-    >
-      <div className="container">
-        {/* Header */}
-        <div className="text-center mb-5">
-          <h1 className="display-5 fw-bold mb-3" style={{ color: "#141E46" }}>
-            Budget Hotels in Vijayawada
-          </h1>
-          <div className="d-inline-flex align-items-center bg-white rounded-pill px-4 py-2 shadow-sm border">
-            <MapPin size={18} className="me-2" style={{ color: "#141E46" }} />
-            <span className="fw-semibold me-3" style={{ color: "#141E46" }}>
-              Target Budget:
-            </span>
-            <span
-              className="badge rounded-pill"
-              style={{ backgroundColor: "#141E46", color: "#fff" }}
-            >
-              ₹1,000 – ₹2,000 / day
-            </span>
+    <article className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-transform transform hover:-translate-y-1">
+      <div className="flex gap-3 p-3 md:p-4">
+        {/* IMAGE */}
+        <div className="flex-shrink-0">
+          <div className="relative">
+            <img
+              src={imgSrc}
+              alt={name}
+              onError={() => setImgSrc(fallback)}
+              className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-full border"
+            />
+
+            {/* RATING BADGE */}
+            <div className="absolute -top-2 -right-2 bg-[#141E46] text-white text-xs font-semibold rounded-full w-7 h-7 flex items-center justify-center">
+              {rating}
+            </div>
           </div>
         </div>
 
-        {/* Hotels Grid */}
-        <div className="row gx-5 gy-4">
-          <div className="col-12 col-lg-6">
-            <div className="d-flex flex-column gap-3">
-              {left.map((hotel) => (
-                <HotelItem key={hotel.name + "_left"} {...hotel} />
-              ))}
-            </div>
+        {/* CONTENT */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between">
+            <h3 className="text-sm md:text-base font-semibold text-[#141E46] truncate">
+              {name}
+            </h3>
+
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs md:text-sm px-2 py-1 rounded-md bg-[#141E46] text-white"
+            >
+              <ExternalLink size={14} /> Book
+            </a>
           </div>
-          <div className="col-12 col-lg-6">
-            <div className="d-flex flex-column gap-3">
-              {right.map((hotel) => (
-                <HotelItem key={hotel.name + "_right"} {...hotel} />
+
+          {/* STARS */}
+          <div className="flex items-center gap-2 mt-2">
+            <div className="flex gap-[2px]">
+              {Array.from({ length: fullStars }).map((_, i) => (
+                <Star key={i} size={14} className="text-[#141E46]" />
               ))}
+              {hasHalf && (
+                <Star size={14} className="text-[#141E46] opacity-60" />
+              )}
+            </div>
+
+            <span className="text-xs text-gray-500">({rating})</span>
+          </div>
+
+          {/* LOCATION */}
+          <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
+            <MapPin size={14} className="text-[#141E46]" />
+            <span>{location}</span>
+          </div>
+
+          {/* AMENITIES */}
+          <div className="flex flex-wrap items-center gap-3 mt-3">
+            <span className="text-xs bg-[#E8EBF7] text-[#141E46] px-2 py-1 rounded">
+              ₹1,000–₹2,000 / day
+            </span>
+
+            <div className="flex gap-2 items-center">
+              {amenities.slice(0, 2).map((a, i) => (
+                <span
+                  key={i}
+                  className="text-xs border px-2 py-1 rounded bg-gray-50 text-[#141E46]"
+                >
+                  {a}
+                </span>
+              ))}
+
+              {amenities.length > 2 && (
+                <span className="text-xs border px-2 py-1 rounded bg-gray-50 text-[#141E46]">
+                  +{amenities.length - 2}
+                </span>
+              )}
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .hotel-item {
-          transition: all 0.3s ease;
-        }
-        .hotel-item:hover {
-          transform: translateY(-3px);
-        }
-        .hotel-item:hover .card {
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-        }
-        .hotel-image {
-          transition: all 0.3s ease;
-        }
-        .hotel-item:hover .hotel-image {
-          transform: scale(1.05);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-        }
-        @media (max-width: 768px) {
-          .col-4 {
-            flex: 0 0 35% !important;
-          }
-          .col-8 {
-            flex: 0 0 65% !important;
-          }
-          .hotel-image {
-            width: 70px !important;
-            height: 70px !important;
-          }
-        }
-      `}</style>
-    </div>
+    </article>
   );
-};
+}
 
-export default HotelList;
+export default function HotelList() {
+  const [left, right] = splitIntoTwoColumns(hotels.slice(0, 15));
+
+  return (
+    <section className="bg-gray-50 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#EB1165]">
+            Budget Hotels in Vijayawada
+          </h2>
+
+          <div className="inline-flex items-center gap-3 mt-3 bg-white rounded-full px-4 py-2 shadow-sm border">
+            <MapPin size={18} className="text-[#141E46]" />
+            <span className="font-medium text-sm text-[#141E46]">
+              Target Budget:
+            </span>
+            <span className="text-xs bg-[#141E46] text-white px-3 py-1 rounded-full">
+              ₹1,000 – ₹2,000 / day
+            </span>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-4">
+            {left.map((hotel) => (
+              <HotelItem key={hotel.name + "_L"} {...hotel} />
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {right.map((hotel) => (
+              <HotelItem key={hotel.name + "_R"} {...hotel} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

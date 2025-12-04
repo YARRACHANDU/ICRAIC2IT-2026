@@ -4,7 +4,7 @@ export default function HotelsStatsSection() {
   const hotels = [
     {
       name: "Novotel Vijayawada Varun",
-      image: "./Novotel.webp",
+      image: "/Novotel.webp",
       description:
         "Luxury 5-star hotel with rooftop pool, spa, and fine-dining restaurants.",
       rating: "4.5 / 5",
@@ -13,7 +13,7 @@ export default function HotelsStatsSection() {
     },
     {
       name: "Lemon Tree Premier",
-      image: "./lemon.webp",
+      image: "/lemon.webp",
       description:
         "Elegant rooms, fitness centre, and outdoor pool. Centrally located.",
       rating: "4.4 / 5",
@@ -22,7 +22,7 @@ export default function HotelsStatsSection() {
     },
     {
       name: "Fortune Murali Park",
-      image: "./murali.webp",
+      image: "/murali.webp",
       description:
         "Popular business hotel with conference halls and multi-cuisine restaurant.",
       rating: "4.3 / 5",
@@ -30,18 +30,17 @@ export default function HotelsStatsSection() {
       link: "https://www.fortunehotels.in/vijayawada-fortune-murali-park.dh.14",
     },
     {
-      name: "Minerva Grand ",
-      image: "./minverva.webp", // add minerva.webp to your project
+      name: "Minerva Grand",
+      image: "/minverva.webp",
       description:
         "Popular upscale hotel located in the city centre. Offers stylish rooms, multi-cuisine restaurant, banquet facilities, gym and close access to MG Road and railway station.",
       rating: "4.2 / 5",
       reviews: "1,420 reviews",
       link: "https://minervahotels.in/",
     },
-
     {
       name: "Quality Hotel DV Manor",
-      image: "./dv.webp",
+      image: "/dv.webp",
       description:
         "Excellent mid-range hotel with great dining and central location.",
       rating: "4.2 / 5",
@@ -50,98 +49,90 @@ export default function HotelsStatsSection() {
     },
     {
       name: "Hotel Manorama",
-      image: "./manorama.webp", // add manorama.webp image in your project
+      image: "/manorama.webp",
       description:
         "Well-known 3-star hotel located near the railway station in Vijayawada. Offers comfortable rooms, multi-cuisine restaurant, banquet halls and easy access to MG Road & Durga Temple.",
       rating: "4.1 / 5",
       reviews: "1,230 reviews",
       link: "https://www.hotelmanorama.com/",
     },
-
     {
       name: "Swarna Palace",
-      image: "./swarna.webp", // add swarna.webp in your public/assets folder
+      image: "/swarna.webp",
       description:
         "Well-known 3-star hotel located in the heart of Vijayawada. Offers modern rooms, in-house restaurant, banquet halls and easy access to MG Road and railway station.",
       rating: "4.1 / 5",
       reviews: "1,150 reviews",
       link: "https://www.hotelswarnapalace.com/",
     },
-
     {
       name: "Vivanta Vijayawada",
-      image: "./vivanta.webp", // make sure to add this image in your project
+      image: "/vivanta.webp",
       description:
         "Modern 5-star hotel located on MG Road. Features spacious rooms, rooftop restaurant, fitness centre and excellent connectivity to all major city locations.",
       rating: "4.3 / 5",
       reviews: "1,560 reviews",
       link: "https://www.tajhotels.com/en-in/gateway/mg-road-vijayawada/",
     },
-
     {
       name: "Hotel Ilapuram",
-      image: "./ilapuram.webp",
+      image: "/ilapuram.webp",
       description:
-        "A 3-star boutique hotel blending classic heritage with contemporary elegance. Offers comfortable stay with modern amenities, in-house vegetarian restaurant, conference facilities, and complimentary breakfast.",
+        "A 3-star boutique hotel blending classic heritage with contemporary elegance. Offers modern amenities, vegetarian dining, conference facilities, and complimentary breakfast.",
       rating: "3.9 / 5",
       reviews: "950 reviews",
       link: "https://www.goibibo.com/hotels/ilapuram-hotel-in-vijayawada-5715766181567320738",
     },
     {
       name: "Hotel Sannidhi (The Boutique Hotel)",
-      image: "./sannidhi.webp", // you can replace with actual image path or filename
+      image: "/sannidhi.webp",
       description:
-        "A 3-star boutique property located in Gandhi Nagar, blending modest comforts with functional value. Offers clean, well-maintained rooms, on-site restaurant, banquet hall for events, free parking, air-conditioning, Wi-Fi, 24-hour front desk, and daily breakfast.",
+        "Boutique hotel in Gandhi Nagar with clean rooms, restaurant, banquet hall, free parking, AC, Wi-Fi, 24/7 front desk, and complimentary breakfast.",
       rating: "3.8 / 5",
       reviews: "114 reviews (MMT) + 531 ratings (Justdial)",
       link: "https://www.hotelsannidhi.com/",
     },
-
     {
       name: "Hotel Capital Luxury Suites",
-      image: "./luxury.webp",
+      image: "/luxury.webp",
       description:
-        "A contemporary 3-star hotel situated near Benz Circle, designed for both business and leisure travelers. The property offers stylish rooms with modern interiors, LED TVs, work desks, and comfortable bedding. Guests can enjoy an in-house multi-cuisine restaurant, conference facilities, complimentary Wi-Fi, and 24-hour front desk service. Its central location provides easy access to shopping, dining, and major landmarks in Vijayawada.",
+        "Modern hotel near Benz Circle with stylish rooms, LED TVs, work desks, Wi-Fi, restaurant, conference spaces, and 24-hour service.",
       rating: "4.2 / 5",
       reviews: "310 ratings (MMT)",
       link: "https://www.booking.com/hotel/in/capital-luxury-suites.html",
     },
-
     {
       name: "Treebo C Plaza",
-      image: "./tree.webp",
+      image: "/tree.webp",
       description:
-        "A budget-friendly 3-star hotel on Bandar Road featuring AC rooms with free Wi-Fi, TV, and essential amenities. Guests are offered complimentary vegetarian breakfast, banquet facilities for small events, and easy access to Vijayawada’s business and shopping hubs.",
+        "Budget-friendly hotel with AC rooms, free Wi-Fi, complimentary vegetarian breakfast, banquet facilities, and prime Bandar Road location.",
       rating: "4.2 / 5",
-      reviews: "31 guest ratings (Goibibo)",
+      reviews: "31 ratings (Goibibo)",
       link: "https://www.treebo.com/hotels-in-vijayawada/treebo-c-plaza-mg-road-bandar-road-503/",
     },
-
     {
       name: "Hotel Pride Madhava",
-      image: "./madhava.webp",
+      image: "/madhava.webp",
       description:
-        "A refined business boutique hotel just off Eluru Road in Srinagar Colony, offering well-appointed rooms with Wi-Fi, LED smart TVs, minibar, and tea/coffee makers. Guests benefit from services like valet parking, 24-hour room service, power backup, laundry, and two banquet halls—ideal for business or event stays.",
+        "Business boutique hotel near Eluru Road with smart TVs, minibar, banquet halls, valet parking, and premium amenities.",
       rating: "3.9 – 4.1 / 5",
       reviews: "83 (MMT) + 1,607 (Justdial)",
       link: "https://www.makemytrip.com/hotels/hotel_pride_madhava-details-vijaywada.html",
     },
-
     {
       name: "Hotel Centre Side",
-      image: "./centre.webp",
+      image: "/centre.webp",
       description:
-        "A centrally located 3-star boutique hotel near Eluru Road, featuring stylish AC rooms with Wi-Fi and in-house dining. Offers modern conveniences such as banquet and boardroom facilities, free parking, and warm, attentive service—ideal for both business and family stays.",
+        "3-star boutique hotel near Eluru Road with modern rooms, dining, boardroom, banquet hall, free parking, and premium service.",
       rating: "4.3 / 5",
-      reviews: "586 guest ratings (MMT) + ~1,870 reviews (Google/Adanione)",
+      reviews: "586 (MMT) + ~1,870 (Google)",
       link: "https://www.makemytrip.com/hotels/hotel_centre_side-details-vijaywada.html",
     },
-
     {
       name: "Hotel Aira",
-      image: "./aira.webp", // add aira.webp to your images folder
+      image: "/aira.webp",
       description:
-        "Contemporary 3-star hotel located near Benz Circle. Features stylish rooms, free Wi-Fi, complimentary breakfast and quick access to MG Road and shopping areas.",
+        "Contemporary 3-star hotel near Benz Circle with stylish rooms, Wi-Fi, breakfast, and excellent city access.",
       rating: "4.2 / 5",
       reviews: "1,040 reviews",
       link: "https://www.airahotel.com/",
@@ -149,68 +140,86 @@ export default function HotelsStatsSection() {
   ];
 
   return (
-    <section className="py-5 text-secondary">
-      <div className="container">
-        <h2 className="text-center fw-bold mb-5" style={{ color: "#141E46" }}>
+    <section className="py-12 bg-white text-black">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          className="text-center text-3xl font-extrabold mb-8"
+          style={{ color: "#EB1165" }}
+        >
           Accommodation Hotels
         </h2>
 
-        {hotels.map((hotel, idx) => (
-          <div className="card mb-4 border-0 shadow-sm" key={idx}>
-            <div
-              className={`row align-items-center flex-md-row flex-column ${
-                idx % 2 !== 0 ? "flex-md-row-reverse" : ""
-              }`}
-            >
-              {/* IMAGE */}
-              <div className={`col-md-4 ${idx % 2 !== 0 ? "me-md-5" : ""}`}>
-                <img
-                  src={hotel.image}
-                  className="img-fluid rounded"
-                  style={{
-                    height: "220px",
-                    objectFit: "cover",
-                    width: "100%",
-                  }}
-                  alt={hotel.name}
-                />
-              </div>
+        <div className="space-y-8">
+          {hotels.map((hotel, idx) => {
+            const isReversed = idx % 2 !== 0;
 
-              {/* TEXT + RATING + BUTTON */}
-              <div className={`col-md-7 ${idx % 2 === 0 ? "ms-md-5" : ""}`}>
-                <h4 className="fw-bold">{hotel.name}</h4>
-                <p className="mb-3">{hotel.description}</p>
-
-                <div className="d-flex gap-4 mb-3">
-                  <div>
-                    <h6 className="mb-0 fw-bold">{hotel.rating}</h6>
-                    <small className="text-muted">Rating</small>
+            return (
+              <article
+                key={hotel.name + idx}
+                className="bg-white shadow-sm rounded-lg overflow-hidden border border-gray-100"
+              >
+                <div
+                  className={`md:flex ${
+                    isReversed ? "md:flex-row-reverse" : "md:flex-row"
+                  } items-center`}
+                >
+                  {/* IMAGE */}
+                  <div className="md:w-5/12 w-full">
+                    <img
+                      src={hotel.image}
+                      alt={hotel.name}
+                      loading="lazy"
+                      className="w-full h-56 md:h-48 object-cover"
+                    />
                   </div>
-                  <div>
-                    <h6 className="mb-0 fw-bold">{hotel.reviews}</h6>
-                    <small className="text-muted">Reviews</small>
+
+                  {/* TEXT CONTENT */}
+                  <div className="md:w-7/12 w-full p-5">
+                    <h3 className="text-xl font-semibold mb-2">{hotel.name}</h3>
+
+                    <p className="text-sm text-gray-700 mb-4">
+                      {hotel.description}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-6 mb-4">
+                      <div>
+                        <div className="text-sm font-semibold">
+                          {hotel.rating}
+                        </div>
+                        <div className="text-xs text-gray-500">Rating</div>
+                      </div>
+
+                      <div>
+                        <div className="text-sm font-semibold">
+                          {hotel.reviews}
+                        </div>
+                        <div className="text-xs text-gray-500">Reviews</div>
+                      </div>
+                    </div>
+
+                    <a
+                      href={hotel.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-block px-4 py-2 rounded-md text-sm font-medium ${
+                        hotel.link === "#"
+                          ? "opacity-60 cursor-not-allowed"
+                          : ""
+                      }`}
+                      style={{
+                        backgroundColor: "#EB1165",
+                        color: "#fff",
+                        border: "1px solid #EB1165",
+                      }}
+                    >
+                      {hotel.link === "#" ? "Not Available" : "Book Now"}
+                    </a>
                   </div>
                 </div>
-
-                <a
-                  href={hotel.link}
-                  style={{
-                    backgroundColor: "#141E46",
-                    borderColor: "#141E46",
-                    color: "#fff",
-                  }}
-                  className={`btn btn-sm ${
-                    hotel.link === "#" ? "disabled" : ""
-                  }`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {hotel.link === "#" ? "Not Available" : "Book Now"}
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
