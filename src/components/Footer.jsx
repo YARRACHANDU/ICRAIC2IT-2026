@@ -1,99 +1,103 @@
-import React from "react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
+  const navLinks = [
+    { label: "About", link: "/about" },
+    { label: "Committees", link: "/committiees" },
+    { label: "Location", link: "/location" },
+    { label: "Authors Guidelines", link: "/authors" },
+    { label: "Registration", link: "/registration" },
+    { label: "Awards", link: "/awards" },
+    { label: "Accommodation", link: "/accommodation" },
+    { label: "Contact Us", link: "/contact" },
+    { label: "Gallery", link: "/gallery" },
+    { label: "Brochure", link: "/brochure" },
+  ];
+
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6 mt-10">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Pharmacy College</li>
-            <li>All Grievances</li>
-            <li>Placement Statistics</li>
-            <li>Accreditations & Affiliations</li>
-            <li>NRI Alumni Registration</li>
-            <li>Entrepreneurship Development Cell</li>
-          </ul>
+    <footer className="bg-gray-100 text-gray-700 pt-12">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        
+        {/* CONFERENCE IDENTITY */}
+        <div className="text-center md:text-left">
+          {/* LOGO */}
+          <img
+            src="/image/nri.png"
+            alt="Conference Logo"
+            className="w-40 h-10"
+          />
+
+          {/* TITLE */}
+          <h2 className="font-bold text-lg text-blue-900 mt-3">
+            ICRAIC2IT - 2026
+          </h2>
+
+          {/* DESCRIPTION */}
+          <p className="mt-3 text-sm leading-relaxed max-w-xs">
+            International Conference on Recent Advancements in AI, Computational
+            Intelligence and Inclusive Technologies.
+          </p>
         </div>
 
+        {/* NAVIGATION */}
         <div>
-          <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Pharmacy College</li>
-            <li>All Grievances</li>
-            <li>Placement Statistics</li>
-            <li>Accreditations & Affiliations</li>
-            <li>NRI Alumni Registration</li>
-            <li>Entrepreneurship Development Cell</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-white text-lg font-semibold mb-4">Quick Info</h3>
-          <ul className="space-y-2 text-sm">
-            <li>IQAC</li>
-            <li>Service Rules</li>
-            <li>Leave Rules</li>
-            <li>Mandatory Disclosure</li>
-            <li>Administrative Committees</li>
-          </ul>
-        </div>
-
-        {/* Quick Info */}
-        <div>
-          <h3 className="text-white text-lg font-semibold mb-4">Downloads</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Newsletters</li>
-            <li>Magazines</li>
-            <li>Prospectus</li>
-            <li>Audit Reports</li>
-            <li>Budget Reports</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-white text-lg font-semibold mb-4">
-            Feedback/Survey
+          <h3 className="font-semibold text-gray-900 mb-2 uppercase text-sm">
+            Navigation
           </h3>
           <ul className="space-y-2 text-sm">
-            <li>Student Exit Survey</li>
-            <li>Alumni Feedback</li>
-            <li>Feedback On Facilities</li>
-            <li>Anti Ragging Undertaking</li>
-            <li>AICTE Student Feedback</li>
-            <li>AICTE Faculty Feedback</li>
-            <li>Parents/Employer Feedback</li>
+            {navLinks.slice(0, 6).map(({ label, link }, i) => (
+              <li key={i}>
+                <a href={link} className="hover:text-[#EB1165] transition">
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* MORE LINKS */}
         <div>
-          <h3 className="text-white text-lg font-semibold mb-4">
-            Get In Touch With Us!
+          <h3 className="font-semibold text-gray-900 mb-2 uppercase text-sm">
+            Quick Links
           </h3>
+          <ul className="space-y-2 text-sm">
+            {navLinks.slice(6).map(({ label, link }, i) => (
+              <li key={i}>
+                <a href={link} className="hover:text-[#EB1165] transition">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <p className="text-sm leading-relaxed">
-            NRI INSTITUTE OF TECHNOLOGY, Pothavarappadu (V), Via Nunna,
-            Agiripalli (M), Vijayawada Rural, Krishna District, Andhra Pradesh.
-          </p>
-
-          <p className="mt-3 text-sm">
-            <strong>Tel :</strong> (+91) 0866 - 2469 666
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp; (+91) 9391 878 787
-          </p>
-
-          <p className="mt-3 text-sm">
-            <strong>Email :</strong> principal@nriit.edu.in
-          </p>
+        {/* SOCIAL MEDIA */}
+        <div>
+          <h3 className="font-semibold text-gray-900 mb-2 uppercase text-sm">
+            Follow Us
+          </h3>
+          <div className="flex gap-4 mt-2">
+            <a href="https://www.facebook.com/NRIInstituteOfTechnology/" className="hover:text-[#EB1165]">
+              <Facebook size={20} />
+            </a>
+            <a href="https://x.com/OfNri" className="hover:text-[#EB1165]">
+              <Twitter size={20} />
+            </a>
+            <a href="https://www.youtube.com/channel/UCjp3K64XEIqE3G3nAEmdyZQ?view_as=subscriber" className="hover:text-[#EB1165]">
+              <Youtube size={20} />
+            </a>
+            <a href="https://www.linkedin.com/company/nri-institute-of-technology-vij/posts/?feedView=all" className="hover:text-[#EB1165]">
+              <Linkedin size={20} />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Bottom */}
-      <div className="border-t border-gray-700 mt-10 pt-4 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} NRI Institute of Technology. All Rights
-        Reserved.
+      {/* COPYRIGHT BAR */}
+      <div className="bg-gray-200 mt-10 py-4">
+        <div className="max-w-7xl mx-auto px-6 text-center text-sm">
+          © {new Date().getFullYear()} ICRAIC2IT - All Rights Reserved | Designed with ❤️
+        </div>
       </div>
     </footer>
   );

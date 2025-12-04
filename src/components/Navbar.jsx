@@ -1,109 +1,173 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-// Usage:
-// 1. Copy this file to your Vite + React project (e.g. src/components/Navbar.jsx)
-// 2. Ensure Tailwind CSS is configured in your project.
-// 3. Install lucide-react if you want icons: `npm i lucide-react`
-// 4. Import and use <Navbar /> in your App.
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [openBrochure, setOpenBrochure] = useState(false);
+  const [pathname, setPathname] = useState("/");
 
-  const navItems = [
-    { name: "HOME", href: "home" },
-    { name: "ABOUT", href: "about" },
-    { name: "COMMITTEES", href: "committees" },
-    { name: "LOCATION", href: "location" },
-    { name: "AUTHORS", href: "authors" },
+  // Replaces Next.js usePathname()
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
 
-    { name: "REGISTRATION", href: "registration" },
-    { name: "AWARDS", href: "awards" },
-    { name: "ACCOMMODATION", href: "accommodation" },
-    { name: "CONTACT US", href: "contact" },
-    { name: "GALLERY", href: "gallery" },
+  const navLinks = [
+    { label: "Home", link: "/" },
+    { label: "About", link: "/about" },
+    { label: "Committees", link: "/committiees" },
+    { label: "Location", link: "/location" },
+    { label: "Authors Guidelines", link: "/authors" },
+    { label: "Registration", link: "/registration" },
+    { label: "Awards", link: "/awards" },
+    { label: "Accommodation", link: "/accommodation" },
+    { label: "Contact Us", link: "/contact" },
+    { label: "Gallery", link: "/gallery" },
+    { label: "Brochure", link: "/brochure" },
   ];
 
   return (
-    <header className="w-full bg-white/80 backdrop-blur sticky top-0 z-50 border-b">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="font-extrabold text-[#8A1538] text-3xl">
-          International Conference on Recent Advancements in Artificial
-          Intelligence, Computational Intelligence, and Inclusive Technologies |
-          ICRAIC2IT - 2025
-        </h1>
+    <header className="w-full bg-white shadow-md sticky top-0 z-50">
 
-        <div className="flex items-center justify-between h-16">
-          {/* left: brand */}
+      {/* 🔹 TITLE */}
+      <h1 className="text-center px-4 py-3 font-extrabold text-blue-950 leading-tight text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
+        4th International Conference on Recent Advancements in Artificial Intelligence,
+        Computational Intelligence, and Inclusive Technologies |
+        <span className="text-[#EB1165] font-bold"> ICRAIC2IT - 2026</span>
+      </h1>
 
-          {/* center: desktop nav */}
-          <div className="hidden md:flex md:items-center md:space-x-2">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
+      {/* 🔹 NAVIGATION BAR */}
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-            {/* Contact show as primary */}
-          </div>
+        {/* MOBILE MENU BUTTON */}
+        <button onClick={() => setOpen(!open)} className="md:hidden text-gray-800 transition">
+          {open ? <X size={30} /> : <Menu size={30} />}
+        </button>
 
-          {/* mobile controls */}
-          <div className="flex md:hidden items-center">
-            <a
-              href="/brochure.pdf"
-              download
-              className="mr-3 px-3 py-2 text-sm font-medium rounded-md border border-gray-200"
-            >
-              Brochure
-            </a>
-            <button
-              onClick={() => setOpen((v) => !v)}
-              aria-label="Toggle menu"
-              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-100"
-            >
-              {open ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
+        {/* DESKTOP MENU */}
+        <ul className="hidden md:flex flex-wrap gap-6 lg:gap-8 text-gray-700 font-semibold tracking-wide uppercase">
+          {navLinks.map(({ label, link }, i) => (
+            <li key={i} className="relative group">
 
-        {/* mobile menu */}
-        {open && (
-          <div className="md:hidden mt-2 pb-4">
-            <div className="space-y-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {/* Not Brochure */}
+              {label !== "Brochure" ? (
+                <>
+                  <a
+                    href={link}
+                    className={`transition ${
+                      pathname === link ? "text-[#EB1165]" : "hover:text-[#EB1165]"
+                    }`}
+                  >
+                    {label}
+                  </a>
 
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="block mt-1 px-3 py-2 rounded-md text-base font-semibold bg-indigo-600 text-white text-center"
-              >
-                CONTACT US
-              </a>
+                  <span
+                    className={`absolute left-0 bottom-0 h-[2px] bg-[#EB1165] transition-all duration-300 ${
+                      pathname === link ? "w-full" : "group-hover:w-full w-0"
+                    }`}
+                  ></span>
+                </>
+              ) : (
+                <>
+                  {/* BROCHURE (Desktop Dropdown Trigger) */}
+                  <button className="cursor-pointer transition hover:text-[#EB1165]">
+                    {label}
+                  </button>
 
-              <a
-                href="/brochure.pdf"
-                download
-                className="block mt-2 px-3 py-2 rounded-md text-base font-medium text-center border border-gray-200"
-              >
-                BROCHURE
-              </a>
-            </div>
-          </div>
-        )}
+                  {/* DROPDOWN */}
+                  <div
+                    className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-lg opacity-0 invisible
+                    group-hover:opacity-100 group-hover:visible transition-all duration-300 w-48 z-50"
+                  >
+                    <a
+                      href="/brochure/download"
+                      className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
+                    >
+                      📄 Download Brochure
+                    </a>
+
+                    <a
+                      href="/brochure/souvenir-1"
+                      className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
+                    >
+                      🎁 Souvenir - 1
+                    </a>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
       </nav>
+
+      {/* 📱 MOBILE SLIDE MENU */}
+      <div
+        className={`md:hidden transition-all duration-300 overflow-hidden bg-white shadow ${
+          open ? "max-h-[600px] opacity-100 py-3" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col gap-4 px-6 text-gray-700 uppercase tracking-wide font-medium">
+          {navLinks.map(({ label, link }, i) => (
+            <li key={i}>
+              {/* Normal items */}
+              {label !== "Brochure" ? (
+                <a
+                  href={link}
+                  onClick={() => setOpen(false)}
+                  className={`block py-1 transition ${
+                    pathname === link ? "text-[#EB1165] font-bold" : "hover:text-[#EB1165]"
+                  }`}
+                >
+                  {label}
+                </a>
+              ) : (
+                <>
+                  {/* Mobile expand toggle */}
+                  <button
+                    onClick={() => setOpenBrochure(!openBrochure)}
+                    className="flex justify-between items-center w-full py-1 hover:text-[#EB1165]"
+                  >
+                    {label}
+                    <span
+                      className={`transition-transform duration-300 ${
+                        openBrochure ? "rotate-180" : "rotate-0"
+                      }`}
+                    >
+                      ▾
+                    </span>
+                  </button>
+
+                  {/* Mobile submenu */}
+                  {openBrochure && (
+                    <div className="ml-4 flex flex-col gap-2 text-sm">
+                      <a
+                        href="/brochure/download"
+                        onClick={() => {
+                          setOpen(false);
+                          setOpenBrochure(false);
+                        }}
+                        className="hover:text-[#EB1165]"
+                      >
+                        📄 Download Brochure
+                      </a>
+
+                      <a
+                        href="/brochure/souvenir-1"
+                        onClick={() => {
+                          setOpen(false);
+                          setOpenBrochure(false);
+                        }}
+                        className="hover:text-[#EB1165]"
+                      >
+                        🎁 Souvenir - 1
+                      </a>
+                    </div>
+                  )}
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 }
