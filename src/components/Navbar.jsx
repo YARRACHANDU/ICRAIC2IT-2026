@@ -14,7 +14,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", link: "/" },
     { label: "About", link: "/about" },
-    { label: "Committees", link: "/committiees" },
+    { label: "Committees", link: "/committees" },
     { label: "Location", link: "/location" },
     { label: "Authors Guidelines", link: "/authors" },
     { label: "Registration", link: "/registration" },

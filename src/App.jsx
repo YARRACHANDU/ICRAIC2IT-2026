@@ -17,7 +17,7 @@ import Brochure from "./pages/Brochure";
 
 export default function App() {
   return (
-    <Router>
+    <>
       <Navbar />
 
       <Routes>
@@ -36,6 +36,6 @@ export default function App() {
       </Routes>
 
       <Footer />
-    </Router>
+    </>
   );
 }
